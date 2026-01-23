@@ -1,0 +1,7 @@
+# SDDM Theme files
+i18n/check.ts
+*.user
+
+# Editor/IDE
+.vscode/
+

@@ -1,0 +1,16 @@
+[SddmGreeterTheme]
+Name=ltmnight-sddm-theme
+Description=Premium HyprLTM Theme
+Author=Djalel Oukid (aka sniper1720)
+Website=https://github.com/hyprltm/ltmnight-sddm-theme
+License=AGPL-3.0
+Type=sddm-theme
+Version=0.1.0
+ConfigFile=Themes/hyprltm.conf
+Screenshot=Previews/ltmnight.png
+MainScript=Main.qml
+TranslationsDirectory=i18n
+
+Theme-Id=ltmnight-sddm-theme
+Theme-API=2.0
+QtVersion=6
