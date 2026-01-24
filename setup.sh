@@ -14,7 +14,7 @@ NC='\033[0m'
 show_help() {
     echo "LTMNight SDDM Theme Installer"
     echo ""
-    echo "Usage: ./install.sh [OPTIONS]"
+    echo "Usage: ./setup.sh [OPTIONS]"
     echo ""
     echo "Options:"
     echo "  -h, --help      Show this help message"
@@ -22,7 +22,7 @@ show_help() {
     echo "  --no-deps       Skip dependency installation"
     echo ""
     echo "One-liner:"
-    echo "  curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/install.sh | sudo bash"
+    echo "  curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/setup.sh | sudo bash"
 }
 
 print_banner() {

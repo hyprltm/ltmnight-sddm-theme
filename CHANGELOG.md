@@ -23,7 +23,7 @@ First release of the LTMNight SDDM theme.
 - Auto-detects system locale for translations and date formatting
 
 ### Technical
-- **Interactive Installer**: CLI installer with menu selection for background style (Static/Live) and virtual keyboard mode
+- **Interactive Installer**: CLI installer (`setup.sh`) with menu selection for background style (Static/Live) and virtual keyboard mode
 - One-line installation script with distro detection
 - Compatible with SDDM 0.21+ and Qt 6.10+
 - Follows Qt 6 best practices for layouts and sizing

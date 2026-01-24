@@ -45,7 +45,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 
 ### ⚡ One-Line Install (Recommended)
 ```bash
-curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/setup.sh | sudo bash
 ```
 > The installer is interactive and will ask for your preferences on:
 > *   **Background Style** (Static Image vs. Live Video)
