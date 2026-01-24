@@ -10,7 +10,16 @@
 
 A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep dark backgrounds, vibrant purple accents, and subtle glow effects. Works on any Linux distribution with SDDM (Arch, Fedora, Ubuntu, openSUSE, etc.).
 
-![Preview](Previews/ltmnight.png)
+## 📸 Previews
+
+### 🖼️ Static
+![Static Preview](Previews/ltmnight.png)
+
+### 🎬 Live
+<!-- Video preview (linked for download/viewing since autoplay isn't supported for repo MP4s) -->
+<video src="Previews/ltmnight.mp4" controls="controls" muted="muted" style="max-width: 100%;">
+  <a href="Previews/ltmnight.mp4">Watch Live Preview</a>
+</video>
 
 ## ✨ Features
 *   **LTMNight Styling** — **Deep Dark** backgrounds, **Vibrant** accents, and **Fluid** interactions.
@@ -41,6 +50,9 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 ```bash
 curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/install.sh | sudo bash
 ```
+> The installer is interactive and will ask for your preferences on:
+> *   **Background Style** (Static Image vs. Live Video)
+> *   **Virtual Keyboard** (Disabled, Manual, or Touch Mode)
 
 ### Manual
 1.  Copy the following folders/files to `/usr/share/sddm/themes/ltmnight`:
