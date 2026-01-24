@@ -130,6 +130,28 @@ else
 fi
 
 echo
+echo -e ":: Background selection:"
+echo -e "   1) Static Image (Recommended for speed)"
+echo -e "   2) Live Video (Requires GPU)"
+read -p ":: Select [1/2]: " -n 1 -r BG_CHOICE
+echo
+
+USER_CONF="$THEME_DIR/Themes/hyprltm.conf.user"
+# Reset user config and start [General] section
+echo -e "[General]" > "$USER_CONF"
+
+if [[ $BG_CHOICE =~ ^[2]$ ]]; then
+    if [ -f "$THEME_DIR/Backgrounds/ltmnight.mp4" ]; then
+        echo -e "Background=\"Backgrounds/ltmnight.mp4\"\nBackgroundSpeed=\"1.0\"" >> "$USER_CONF"
+        echo -e "${GREEN}:: Live background enabled${NC}"
+    else
+        echo -e "${RED}:: Video file not found. Keeping static background.${NC}"
+    fi
+else
+    echo -e ":: Static background kept (default)"
+fi
+
+echo
 echo -e ":: Virtual keyboard setup:"
 echo -e "   1) Disabled (no virtual keyboard)"
 echo -e "   2) Manual only (toggle button, no auto-show)"
@@ -137,19 +159,17 @@ echo -e "   3) Touch/Tablet (auto-show on focus)"
 read -p ":: Select [1/2/3]: " -n 1 -r VK_CHOICE
 echo
 
-USER_CONF="$THEME_DIR/Themes/hyprltm.conf.user"
-
 case $VK_CHOICE in
     2)
         mkdir -p "/etc/sddm.conf.d"
         echo -e "[General]\nInputMethod=qtvirtualkeyboard" > /etc/sddm.conf.d/virtualkeyboard.conf
-        echo -e "[General]\nHideVirtualKeyboard=\"false\"\nVirtualKeyboardAutoShow=\"false\"" > "$USER_CONF"
+        echo -e "HideVirtualKeyboard=\"false\"\nVirtualKeyboardAutoShow=\"false\"" >> "$USER_CONF"
         echo -e "${GREEN}:: Virtual keyboard: Manual mode enabled${NC}"
         ;;
     3)
         mkdir -p "/etc/sddm.conf.d"
         echo -e "[General]\nInputMethod=qtvirtualkeyboard" > /etc/sddm.conf.d/virtualkeyboard.conf
-        echo -e "[General]\nHideVirtualKeyboard=\"false\"\nVirtualKeyboardAutoShow=\"true\"" > "$USER_CONF"
+        echo -e "HideVirtualKeyboard=\"false\"\nVirtualKeyboardAutoShow=\"true\"" >> "$USER_CONF"
         echo -e "${GREEN}:: Virtual keyboard: Touch/Tablet mode enabled${NC}"
         ;;
     *)
