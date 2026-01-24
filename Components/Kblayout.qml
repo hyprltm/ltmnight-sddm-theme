@@ -9,7 +9,7 @@ ComboBox {
 
     // Implicit sizing for Qt 6 Layout compatibility
     implicitHeight: root.font.pointSize * 2
-    implicitWidth: root.font.pointSize * 10
+    // implicitWidth: Auto-size based on content
 
     hoverEnabled: true
     
@@ -97,8 +97,8 @@ ComboBox {
             text: qsTr("Layout") + " (" + layoutCode + ")"
             
             // Prevent overflow
-            elide: Text.ElideRight
-            maximumLineCount: 1
+            // elide: Text.ElideRight
+            // maximumLineCount: 1
             
             color: layoutButton.hovered || layoutButton.visualFocus 
                 ? config.HoverSessionButtonTextColor 
@@ -150,10 +150,14 @@ ComboBox {
     states: [
         State {
             name: "pressed"
-            when: layoutButton.down
+            when: layoutButton.down || layoutButton.popup.visible
             PropertyChanges {
                 target: displayedItem
                 color: config.HoverSessionButtonTextColor
+            }
+            PropertyChanges {
+                target: globeIcon
+                icon.color: config.HoverSessionButtonTextColor
             }
         },
         State {
@@ -163,6 +167,10 @@ ComboBox {
                 target: displayedItem
                 color: config.HoverSessionButtonTextColor
             }
+            PropertyChanges {
+                target: globeIcon
+                icon.color: config.HoverSessionButtonTextColor
+            }
         },
         State {
             name: "focused"
@@ -170,6 +178,10 @@ ComboBox {
             PropertyChanges {
                 target: displayedItem
                 color: config.HoverSessionButtonTextColor
+            }
+            PropertyChanges {
+                target: globeIcon
+                icon.color: config.HoverSessionButtonTextColor
             }
         }
     ]
