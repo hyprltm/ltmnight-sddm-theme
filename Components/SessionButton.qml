@@ -65,14 +65,15 @@ Item {
             
             Button {
                 id: sessionIcon
-                width: root.font.pointSize * 1.5
-                height: root.font.pointSize * 1.5
+                anchors.verticalCenter: parent.verticalCenter
+                width: root.font.pointSize * 2
+                height: root.font.pointSize * 2
                 flat: true
                 enabled: false
                 
                 icon.source: Qt.resolvedUrl("../Assets/Session.svg")
-                icon.width: root.font.pointSize * 1.2
-                icon.height: root.font.pointSize * 1.2
+                icon.width: root.font.pointSize * 1.5
+                icon.height: root.font.pointSize * 1.5
                 icon.color: selectSession.hovered || selectSession.visualFocus 
                     ? config.HoverSessionButtonTextColor 
                     : config.SessionButtonTextColor
@@ -82,6 +83,7 @@ Item {
 
             Text {
                 id: displayedItem
+                anchors.verticalCenter: parent.verticalCenter
                 
                 text: (config.TranslateSessionSelection || qsTr("Session")) + " (" + selectSession.currentText + ")"
                 
