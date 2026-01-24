@@ -16,10 +16,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 ![Static Preview](Previews/ltmnight.png)
 
 ### 🎬 Live
-<!-- Video preview (linked for download/viewing since autoplay isn't supported for repo MP4s) -->
-<video src="Previews/ltmnight.mp4" controls="controls" muted="muted" style="max-width: 100%;">
-  <a href="Previews/ltmnight.mp4">Watch Live Preview</a>
-</video>
+![Live Preview](Previews/ltmnight-live.webp)
 
 ## ✨ Features
 *   **LTMNight Styling** — **Deep Dark** backgrounds, **Vibrant** accents, and **Fluid** interactions.
