@@ -7,13 +7,10 @@ import QtQuick.Controls
 ComboBox {
     id: layoutButton
 
-    // Implicit sizing for Qt 6 Layout compatibility
     implicitHeight: root.font.pointSize * 2
-    // implicitWidth: Auto-size based on content
-
+    
     hoverEnabled: true
     
-    // Safety check for keyboard model
     model: keyboard.layouts
     
     Component.onCompleted: {
@@ -41,7 +38,6 @@ ComboBox {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
 
-            // Safety: Access properties carefully or fallback
             text: modelData.longName ? modelData.longName : modelData.shortName ? modelData.shortName : "Unknown"
             font.pointSize: root.font.pointSize * 0.8
             font.family: root.font.family
@@ -84,7 +80,6 @@ ComboBox {
             id: displayedItem
             anchors.verticalCenter: parent.verticalCenter
             
-            // Use shortName for compact display (e.g., "EN" instead of "English")
             property string layoutCode: {
                 var layouts = keyboard.layouts
                 var idx = keyboard.currentLayout
@@ -95,10 +90,6 @@ ComboBox {
             }
             
             text: qsTr("Layout") + " (" + layoutCode + ")"
-            
-            // Prevent overflow
-            // elide: Text.ElideRight
-            // maximumLineCount: 1
             
             color: layoutButton.hovered || layoutButton.visualFocus 
                 ? config.HoverSessionButtonTextColor 
@@ -122,7 +113,6 @@ ComboBox {
 
         implicitHeight: contentItem.implicitHeight
         width: layoutButton.width
-        // Open BELOW the button (since we're at top of screen)
         y: parent.height
         x: 0
         padding: 10
