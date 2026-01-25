@@ -4,11 +4,9 @@
 import QtQuick
 import QtQuick.Controls
 
-// SessionButton - uses implicit sizing for Qt 6 Layout compatibility
 Item {
     id: sessionButton
 
-    // Implicit sizing allows layouts to calculate preferred size
     implicitHeight: root.font.pointSize * 2
     implicitWidth: root.font.pointSize * 20
     
@@ -108,8 +106,7 @@ Item {
             id: popupHandler
 
             implicitHeight: contentItem.implicitHeight
-            width: Math.max(250, sessionButton.width)  // Use sessionButton's actual width
-            // Open UPWARDS
+            width: Math.max(250, sessionButton.width)
             y: -popupHandler.height + 5
             x: (selectSession.width - popupHandler.width) / 2
             padding: 10
