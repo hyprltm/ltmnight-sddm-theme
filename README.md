@@ -10,17 +10,17 @@
 
 A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep dark backgrounds, vibrant purple accents, and subtle glow effects. Works on any Linux distribution with SDDM (Arch, Fedora, Ubuntu, openSUSE, etc.).
 
-## 📸 Previews
+## Previews
 
-### 🖼️ Static
+### Static
 ![Static Preview](Previews/ltmnight.png)
 
-### 🎬 Live
+### Live
 ![Live Preview](Previews/ltmnight-live.webp)
 
-## ✨ Features
+## Features
 *   **LTMNight Styling** — **Deep Dark** backgrounds, **Vibrant** accents, and **Fluid** interactions.
-*   **Video Backgrounds** — Supports MP4, WebM, MKV, and animated GIFs.
+*   **Live Backgrounds** — Supports MP4, WebM, MKV, and animated GIFs.
 *   **Partial Blur** — Frosted glass effect behind the login form.
 *   **Dynamic Hostname** — Personalized header showing your machine's name.
 *   **Virtual Keyboard** — Toggle in top-left corner, auto-show option for touch devices.
@@ -29,7 +29,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 *   **Multi-Language** — 15 languages with auto-detection, RTL support for Arabic/Persian/Urdu.
 *   **HiDPI Ready** — Auto-scales UI based on screen resolution.
 
-## 📦 Dependencies
+## Dependencies
 
 | Package | Arch | Fedora | Debian/Ubuntu |
 |---------|------|--------|---------------|
@@ -41,9 +41,9 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 | Font | `ttf-jetbrains-mono` | `jetbrains-mono-fonts` | `fonts-jetbrains-mono` |
 | Virtual Keyboard | `qt6-virtualkeyboard` | `qt6-qtvirtualkeyboard` | `qml6-module-qtquick-virtualkeyboard` |
 
-## 🛠️ Installation
+## Installation
 
-### ⚡ One-Line Install (Recommended)
+### One-Line Install (Recommended)
 ```bash
 curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/setup.sh | sudo bash
 ```
@@ -66,7 +66,7 @@ curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/set
     Current=ltmnight
     ```
 
-## 🎨 Customization
+## Customization
 
 Create a user config file (won't be overwritten on updates):
 ```
@@ -92,7 +92,7 @@ All options are in the theme config. Key ones:
 | `HeaderText` | Custom header text |
 | `HideVirtualKeyboard` | Set to `true` to hide on-screen keyboard |
 
-## 🖥️ High DPI & Scaling
+## High DPI & Scaling
 The theme automatically scales UI elements based on screen height.
 
 **Note**: SDDM v0.20.0+ enables HiDPI support by default.
@@ -104,13 +104,13 @@ Create `/etc/sddm.conf.d/hidpi.conf`:
 GreeterEnvironment=QT_SCREEN_SCALE_FACTORS=2,QT_FONT_DPI=192
 ```
 
-## 🧪 Testing
+## Testing
 Preview the theme without logging out:
 ```bash
 sddm-greeter-qt6 --test-mode --theme $(pwd)
 ```
 
-### ⌨️ Virtual Keyboard
+### Virtual Keyboard
 
 **Three modes** (configured via install script):
 
@@ -142,22 +142,22 @@ VirtualKeyboardAutoShow="false"   # or "true" for touch mode
 
 If you find this tool helpful, there are many ways to support the project:
 
-### 💰 Financial Support
+### Financial Support
 If you'd like to support the development financially:
 
 <a href="https://www.buymeacoffee.com/linuxtechmore"><img src="https://img.shields.io/badge/Fuel%20the%20next%20commit-f1fa8c?style=for-the-badge&logo=buy-me-a-coffee&logoColor=282a36" height="42" /></a>
 <a href="https://github.com/sponsors/sniper1720"><img src="https://img.shields.io/badge/Become%20a%20Sponsor-bd93f9?style=for-the-badge&logo=github&logoColor=white" height="42" /></a>
 
-### 🤝 Contribute & Support
+### Contribute & Support
 Financial contributions are not the only way to help! Here are other options:
-- **⭐ Star the Repository**: It helps more people find the project!
-- **🩹 Report Bugs**: Found an issue? Open a ticket on GitHub.
-- **💡 Suggest Features**: Have a cool idea? Let me know!
-- **📢 Share**: Tell your friends!
+- **Star the Repository**: It helps more people find the project!
+- **Report Bugs**: Found an issue? Open a ticket on GitHub.
+- **Suggest Features**: Have a cool idea? Let me know!
+- **Share**: Tell your friends!
 
 Every bit of support helps keep the project alive and ensures I can spend more time developing open source tools for the Linux community!
 
-## 📜 License
+## License
 **Copyright (C) 2026 Djalel Oukid (sniper1720)**
 Licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 Free to share and modify, but changes must be open-sourced.
