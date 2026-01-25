@@ -120,7 +120,7 @@ fi
 
 echo
 read -p ":: Apply theme to sddm.conf? [y/N] " -n 1 -r
-echo
+echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     mkdir -p "/etc/sddm.conf.d"
     echo -e "[Theme]\nCurrent=$THEME_NAME" > /etc/sddm.conf.d/theme.conf
