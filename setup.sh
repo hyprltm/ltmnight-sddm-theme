@@ -119,7 +119,7 @@ if [ ! -f "$THEME_DIR/Main.qml" ]; then
 fi
 
 echo
-read -p ":: Apply theme to sddm.conf? [y/N] " -n 1 -r
+read -p ":: Apply theme to sddm.conf? [y/N] " -n 1 -r < /dev/tty
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     mkdir -p "/etc/sddm.conf.d"
@@ -133,7 +133,7 @@ echo
 echo -e ":: Background selection:"
 echo -e "   1) Static Image (Recommended for speed)"
 echo -e "   2) Live Video (Requires GPU)"
-read -p ":: Select [1/2]: " -n 1 -r BG_CHOICE
+read -p ":: Select [1/2]: " -n 1 -r BG_CHOICE < /dev/tty
 echo
 
 USER_CONF="$THEME_DIR/Themes/hyprltm.conf.user"
@@ -156,7 +156,7 @@ echo -e ":: Virtual keyboard setup:"
 echo -e "   1) Disabled (no virtual keyboard)"
 echo -e "   2) Manual only (toggle button, no auto-show)"
 echo -e "   3) Touch/Tablet (auto-show on focus)"
-read -p ":: Select [1/2/3]: " -n 1 -r VK_CHOICE
+read -p ":: Select [1/2/3]: " -n 1 -r VK_CHOICE < /dev/tty
 echo
 
 case $VK_CHOICE in
