@@ -93,7 +93,6 @@ Pane {
             z: 1
         }
 
-        // TopBar - VK toggle (left) and Kblayout (right)
         TopBar {
             id: topBar
 
@@ -107,6 +106,7 @@ Pane {
         Loader {
             id: virtualKeyboard
             source: "Components/VirtualKeyboard.qml"
+            active: true
 
             width: config.KeyboardSize == "" ? parent.width * 0.4 : parent.width * config.KeyboardSize
             anchors.bottom: parent.bottom
@@ -207,10 +207,6 @@ Pane {
             
             height: parent.height
 
-            // width: config.FullBlur == "true" ? parent.width : form.width
-            // anchors.centerIn: config.FullBlur == "true" ? parent : form
-
-            // This solves problem when FullBlur and HaveFormBackground is set to true but PartialBlur is false and FormPosition isn't center.
             width: (config.FullBlur == "true" && config.PartialBlur == "false" && config.FormPosition != "center" ) ? parent.width - formBackground.width : config.FullBlur == "true" ? parent.width : form.width 
             anchors.centerIn: config.FullBlur == "true" ? backgroundImage : form
 
