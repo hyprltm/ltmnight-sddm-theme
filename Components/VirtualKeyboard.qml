@@ -10,14 +10,28 @@ InputPanel {
     property bool manualToggle: false
     property bool autoShowEnabled: config.VirtualKeyboardAutoShow == "true"
 
-    // Show if: manually toggled OR (auto-show enabled AND focus triggered)
-    y: (manualToggle || (autoShowEnabled && active)) ? parent.height - height : parent.height
-    visible: y < parent.height
+    y: parent.height
 
-    Behavior on y {
+    state: (manualToggle || (autoShowEnabled && active)) ? "visible" : "hidden"
+
+    states: [
+        State {
+            name: "visible"
+            PropertyChanges { target: virtualKeyboard; y: parent.height - height }
+        },
+        State {
+            name: "hidden"
+            PropertyChanges { target: virtualKeyboard; y: parent.height }
+        }
+    ]
+
+    transitions: Transition {
         NumberAnimation {
+            properties: "y"
             duration: 150
             easing.type: Easing.OutQuad
         }
     }
+    
+    visible: y < parent.height
 }
