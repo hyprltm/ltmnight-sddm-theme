@@ -140,7 +140,7 @@ VirtualKeyboardAutoShow="false"   # or "true" for touch mode
 
 ## ❤️ Support the Project
 
-If you find this tool helpful, there are many ways to support the project:
+If you find this theme helpful, there are many ways to support the project:
 
 ### Financial Support
 If you'd like to support the development financially:
