@@ -92,7 +92,7 @@ All options are in the theme config. Key ones:
 | `HeaderText` | Custom header text |
 | `HideVirtualKeyboard` | Set to `true` to hide on-screen keyboard |
 
-## High DPI & Scaling
+### High DPI & Scaling
 The theme automatically scales UI elements based on screen height.
 
 **Note**: SDDM v0.20.0+ enables HiDPI support by default.
