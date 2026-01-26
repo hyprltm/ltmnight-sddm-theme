@@ -1,3 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-  <path d="M2 3h20v18H2V3zm18 16V7H4v12h16zM6 9h12v2H6V9zm0 4h8v2H6v-2z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <g transform="scale(0.8)">
+    <path
+       d="M 6.9628906e-6,-5.0634766e-6 H 30.000007 V 29.999995 H 6.9628906e-6 Z M 27.000007,26.666675 V 6.6666649 h -24 V 26.666675 Z M 6.000017,9.9999849 h 18 v 3.3333401 h -18 z m 0,6.6666801 h 11.99999 v 3.33334 H 6.000017 Z"
+       fill="currentColor" />
+  </g>
 </svg>
