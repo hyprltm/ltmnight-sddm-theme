@@ -26,9 +26,12 @@ Pane {
     palette.buttonText: config.HoverSystemButtonsIconsColor
 
     font.family: config.Font
-    font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80) || 13
+    font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(Math.min(width, height) / 80) || 13
     
     focus: true
+    
+    // Detect portrait mode for responsive layout
+    property bool isPortrait: height > width
 
     property bool leftleft: config.HaveFormBackground == "true" &&
                             config.PartialBlur == "false" &&
@@ -86,7 +89,8 @@ Pane {
             id: form
 
             height: parent.height
-            width: Math.max(parent.width / 2.5, 300)
+            // Wider container on portrait screens (85% width) vs landscape (40% width)
+            width: isPortrait ? Math.max(parent.width * 0.85, 300) : Math.max(parent.width / 2.5, 300)
             anchors.left: config.FormPosition == "left" ? parent.left : undefined
             anchors.horizontalCenter: config.FormPosition == "center" ? parent.horizontalCenter : undefined
             anchors.right: config.FormPosition == "right" ? parent.right : undefined
