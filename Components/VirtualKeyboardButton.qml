@@ -26,11 +26,14 @@ Button {
             height: root.font.pointSize * 2
             anchors.verticalCenter: parent.verticalCenter
             flat: true
+            padding: 0
             enabled: false
             
-            icon.source: Qt.resolvedUrl("../Assets/Keyboard.svg")
-            icon.width: root.font.pointSize * 1.5
-            icon.height: root.font.pointSize * 1.5
+            icon.source: virtualKeyboardButton.checked 
+                ? Qt.resolvedUrl("../Assets/keyboard-hide.svg") 
+                : Qt.resolvedUrl("../Assets/keyboard-show.svg")
+            icon.width: root.font.pointSize * 1.125
+            icon.height: root.font.pointSize * 1.125
             icon.color: virtualKeyboardButton.hovered || virtualKeyboardButton.visualFocus 
                 ? config.HoverVirtualKeyboardButtonTextColor 
                 : config.VirtualKeyboardButtonTextColor
