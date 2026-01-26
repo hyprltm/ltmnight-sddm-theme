@@ -66,12 +66,13 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: root.font.pointSize * 2
                 height: root.font.pointSize * 2
+                padding: 0
                 flat: true
                 enabled: false
                 
                 icon.source: Qt.resolvedUrl("../Assets/Session.svg")
-                icon.width: root.font.pointSize * 1.5
-                icon.height: root.font.pointSize * 1.5
+                icon.width: root.font.pointSize * 1.125
+                icon.height: root.font.pointSize * 1.125
                 icon.color: selectSession.hovered || selectSession.visualFocus 
                     ? config.HoverSessionButtonTextColor 
                     : config.SessionButtonTextColor
