@@ -3,7 +3,7 @@ set -e
 
 THEME_NAME="ltmnight"
 THEME_DIR="/usr/share/sddm/themes/$THEME_NAME"
-VERSION="0.1.0"
+VERSION="1.2.0"
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -132,8 +132,9 @@ fi
 echo
 echo -e ":: Background selection:"
 echo -e "   1) Static Image (Recommended for speed)"
-echo -e "   2) Live Video (Requires GPU)"
-read -p ":: Select [1/2]: " -n 1 -r BG_CHOICE < /dev/tty
+echo -e "   2) Live Video"
+echo -e "   3) Animated LTMNight Shader (GLSL)"
+read -p ":: Select [1/2/3]: " -n 1 -r BG_CHOICE < /dev/tty
 echo
 
 USER_CONF="$THEME_DIR/Themes/hyprltm.conf.user"
@@ -147,6 +148,9 @@ if [[ $BG_CHOICE =~ ^[2]$ ]]; then
     else
         echo -e "${RED}:: Video file not found. Keeping static background.${NC}"
     fi
+elif [[ $BG_CHOICE =~ ^[3]$ ]]; then
+    echo -e "Background=\"ltmnight\"" >> "$USER_CONF"
+    echo -e "${GREEN}:: LTMNight GLSL background enabled${NC}"
 else
     echo -e ":: Static background kept (default)"
 fi

@@ -121,6 +121,19 @@ Pane {
             z: 10
         }
         
+        Loader {
+            id: proceduralBackground
+            anchors.fill: parent
+            source: "Components/LTMNightBackground.qml"
+            active: config.Background === "ltmnight"
+            visible: active
+            asynchronous: true
+            onLoaded: {
+                item.bgColor = config.BackgroundColor
+                item.accentColor = config.HighlightBackgroundColor
+            }
+        }
+
         Image {
             id: backgroundPlaceholderImage
 
@@ -132,6 +145,8 @@ Pane {
         AnimatedImage {
             id: backgroundImage
             
+            // Only active if NOT procedural
+            visible: config.Background !== "ltmnight"            
             MediaPlayer {
                 id: player
                 
@@ -176,6 +191,8 @@ Pane {
             mipmap: true
 
             Component.onCompleted:{
+                if (config.Background === "ltmnight") return;
+
                 var fileType = config.Background.substring(config.Background.lastIndexOf(".") + 1)
                 const videoFileTypes = ["avi", "mp4", "mov", "mkv", "m4v", "webm"];
                 if (videoFileTypes.includes(fileType)) {

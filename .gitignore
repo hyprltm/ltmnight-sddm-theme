@@ -5,3 +5,7 @@ i18n/check.ts
 # Editor/IDE
 .vscode/
 
+
+# Release Archives
+*.zip
+*.tar.gz

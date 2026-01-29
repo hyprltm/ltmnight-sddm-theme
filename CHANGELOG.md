@@ -2,6 +2,20 @@
 
 All notable changes to the **ltmnight-sddm-theme** will be documented here.
 
+## v1.2.0 - The "Visual" Update
+*Released: 2026-01-29*
+
+This release introduces a stunning, fully procedural animated background.
+
+### Added
+- **Animated LTMNight Shader**: A high-performance procedural background created using **GLSL** and compiled with **Qt Shader Tools (`qsb`)**.
+
+### Improved
+- **Installer**: Added support for selecting the new shader background.
+- **Documentation**: Added shader preview and configuration steps.
+
+---
+
 ## v1.1.0 - The "Polish" Update
 *Released: 2026-01-27*
 

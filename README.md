@@ -1,7 +1,7 @@
 # ltmnight-sddm-theme
 
 ![Stars](https://img.shields.io/github/stars/hyprltm/ltmnight-sddm-theme?style=for-the-badge&labelColor=282a36&color=ff5555)
-![Version](https://img.shields.io/badge/Version-v0.1.0-bd93f9?style=for-the-badge&labelColor=282a36)
+![Version](https://img.shields.io/badge/Version-v1.0.0-bd93f9?style=for-the-badge&labelColor=282a36)
 ![License](https://img.shields.io/badge/License-AGPL%20v3-ffb86c?style=for-the-badge&labelColor=282a36)
 ![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36&logo=qt&logoColor=white)
 ![SDDM](https://img.shields.io/badge/SDDM-0.21+-8be9fd?style=for-the-badge&labelColor=282a36)
@@ -15,8 +15,12 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 ### Static
 ![Static Preview](Previews/ltmnight.png)
 
-### Live
+### Live (video)
 ![Live Preview](Previews/ltmnight-live.webp)
+
+### Animated Shader (GLSL)
+![Shader Preview](Previews/ltmnight-shader.webm)
+> **Note**: Requires OpenGL 2.1+ support (GPUs from 2010+). For very old hardware, it is recommended to use **Static Image** mode.
 
 ## Features
 *   **LTMNight Styling** — **Deep Dark** backgrounds, **Vibrant** accents, and **Fluid** interactions.
@@ -48,7 +52,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/setup.sh | sudo bash
 ```
 > The installer is interactive and will ask for your preferences on:
-> *   **Background Style** (Static Image vs. Live Video)
+> *   **Background Style** (Static Image, Live Video, or Animated LTMNight Shader)
 > *   **Virtual Keyboard** (Disabled, Manual, or Touch Mode)
 
 ### Manual
@@ -77,7 +81,7 @@ Create a user config file (won't be overwritten on updates):
 ```ini
 [General]
 HideVirtualKeyboard="true"
-Background="Backgrounds/custom.png"
+Background="ltmnight"  # Use "ltmnight" for the shader, or path to image/video
 ```
 
 ### Available Options
@@ -85,8 +89,8 @@ All options are in the theme config. Key ones:
 
 | Option | Description |
 |--------|-------------|
-| `Background` | Path to background image/video |
-| `PartialBlur` | Enable blur behind login form |
+| `Background` | `path/to/file` or `"ltmnight"` (Shader) |
+| `PartialBlur` | `"true"` or `"false"` to enable blur behind login form |
 | `FormPosition` | `left`, `center`, or `right` |
 | `HourFormat` | Time format (e.g., `HH:mm`) |
 | `HeaderText` | Custom header text |
