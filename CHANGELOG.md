@@ -11,7 +11,7 @@ This release introduces a stunning, fully procedural animated background.
 - **Animated LTMNight Shader**: A high-performance procedural background created using **GLSL** and compiled with **Qt Shader Tools (`qsb`)**.
 
 ### Improved
-- **Installer**: Added support for selecting the new shader background.
+- **Installer**: Added support for selecting the new animated shader background.
 - **Documentation**: Added shader preview and configuration steps.
 
 ---

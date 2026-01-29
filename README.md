@@ -1,7 +1,7 @@
 # ltmnight-sddm-theme
 
 ![Stars](https://img.shields.io/github/stars/hyprltm/ltmnight-sddm-theme?style=for-the-badge&labelColor=282a36&color=ff5555)
-![Version](https://img.shields.io/badge/Version-v1.0.0-bd93f9?style=for-the-badge&labelColor=282a36)
+![Version](https://img.shields.io/badge/Version-v1.2.0-bd93f9?style=for-the-badge&labelColor=282a36)
 ![License](https://img.shields.io/badge/License-AGPL%20v3-ffb86c?style=for-the-badge&labelColor=282a36)
 ![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36&logo=qt&logoColor=white)
 ![SDDM](https://img.shields.io/badge/SDDM-0.21+-8be9fd?style=for-the-badge&labelColor=282a36)
