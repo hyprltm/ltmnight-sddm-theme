@@ -5,10 +5,12 @@ All notable changes to the **ltmnight-sddm-theme** will be documented here.
 ## v1.2.0 - The "Visual" Update
 *Released: 2026-01-29*
 
-This release introduces a stunning, fully procedural animated background.
+This release introduces a stunning, fully animated shader background.
 
 ### Added
-- **Animated LTMNight Shader**: A high-performance procedural background created using **GLSL** and compiled with **Qt Shader Tools (`qsb`)**.
+- **Animated LTMNight Shader**: A high-performance shader background created using **GLSL** and compiled with **Qt Shader Tools (`qsb`)**.
+- **AUR Package**: Official `ltmnight-sddm-theme` package.
+- **KDE Store**: Now available for direct installation via KDE System Settings.
 
 ### Improved
 - **Installer**: Added support for selecting the new animated shader background.

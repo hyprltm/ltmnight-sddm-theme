@@ -9,3 +9,9 @@ i18n/check.ts
 # Release Archives
 *.zip
 *.tar.gz
+
+# Arch Packaging Artifacts
+*.pkg.tar.zst
+src/
+pkg/
+ltmnight-sddm-theme-*/

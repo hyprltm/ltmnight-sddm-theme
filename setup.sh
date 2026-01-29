@@ -66,17 +66,17 @@ install_deps() {
     
     if [ -f /etc/arch-release ]; then
         echo -e ":: Arch Linux detected"
-        pacman -S --needed --noconfirm sddm qt6-5compat qt6-declarative qt6-svg qt6-virtualkeyboard ttf-jetbrains-mono git
+        pacman -S --needed --noconfirm sddm qt6-declarative qt6-svg qt6-virtualkeyboard ttf-jetbrains-mono git
     elif [ -f /etc/fedora-release ]; then
         echo -e ":: Fedora detected"
-        dnf install -y sddm qt6-qt5compat qt6-qtdeclarative qt6-qtsvg qt6-qtvirtualkeyboard jetbrains-mono-fonts git
+        dnf install -y sddm qt6-qtdeclarative qt6-qtsvg qt6-qtvirtualkeyboard jetbrains-mono-fonts git
     elif [ -f /etc/debian_version ]; then
         echo -e ":: Debian/Ubuntu detected"
         apt update
-        apt install -y sddm qml6-module-qt5compat-graphicaleffects qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtquick-virtualkeyboard libqt6svg6 fonts-jetbrains-mono git
+        apt install -y sddm qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtquick-virtualkeyboard libqt6svg6 fonts-jetbrains-mono git
     elif [ -f /etc/os-release ] && grep -q "openSUSE" /etc/os-release; then
         echo -e ":: openSUSE detected"
-        zypper install -y sddm libQt6Core6 libQt6Gui6 libQt6Quick6 libQt6QuickControls2-6 libQt6Svg6 libQt6Sql6 qt6-virtualkeyboard qt6-qt5compat-imports jetbrains-mono-fonts git
+        zypper install -y sddm libQt6Core6 libQt6Gui6 libQt6Quick6 libQt6QuickControls2-6 libQt6Svg6 libQt6Sql6 qt6-virtualkeyboard jetbrains-mono-fonts git
     else
         echo -e "${RED}Unsupported distro. Install dependencies manually: Qt6, SDDM, JetBrains Mono.${NC}"
     fi
@@ -86,32 +86,48 @@ if [ "$SKIP_DEPS" = false ]; then
     install_deps
 fi
 
-if [ -f "Main.qml" ]; then
-    echo -e ":: Local install"
-    SOURCE_DIR="."
+# Determine run mode
+REAL_PATH=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$REAL_PATH")
+
+if [ "$SCRIPT_DIR" == "$THEME_DIR" ]; then
+    echo -e ":: Running in Configurator Mode"
+    IS_INSTALLED=true
 else
-    echo -e ":: Cloning repository..."
-    TEMP_DIR=$(mktemp -d)
-    git clone --depth 1 https://github.com/hyprltm/ltmnight-sddm-theme.git "$TEMP_DIR"
-    SOURCE_DIR="$TEMP_DIR"
-    trap 'rm -rf "$TEMP_DIR"' EXIT
+    IS_INSTALLED=false
 fi
 
-if [ -d "$THEME_DIR" ]; then
-    echo -e ":: Removing old installation..."
-    rm -rf "$THEME_DIR"
-fi
+if [ "$IS_INSTALLED" = false ]; then
+    if [ -f "Main.qml" ]; then
+        echo -e ":: Local install"
+        SOURCE_DIR="."
+    else
+        echo -e ":: Cloning repository..."
+        TEMP_DIR=$(mktemp -d)
+        git clone --depth 1 https://github.com/hyprltm/ltmnight-sddm-theme.git "$TEMP_DIR"
+        SOURCE_DIR="$TEMP_DIR"
+        trap 'rm -rf "$TEMP_DIR"' EXIT
+    fi
 
-echo -e ":: Installing to $THEME_DIR..."
-mkdir -p "$THEME_DIR"
-cp -r "$SOURCE_DIR/Assets" \
-      "$SOURCE_DIR/Backgrounds" \
-      "$SOURCE_DIR/Components" \
-      "$SOURCE_DIR/Themes" \
-      "$SOURCE_DIR/i18n" \
-      "$SOURCE_DIR/Main.qml" \
-      "$SOURCE_DIR/metadata.desktop" \
-      "$THEME_DIR/"
+    if [ -d "$THEME_DIR" ]; then
+        echo -e ":: Removing old installation..."
+        rm -rf "$THEME_DIR"
+    fi
+
+    echo -e ":: Installing to $THEME_DIR..."
+    mkdir -p "$THEME_DIR"
+    cp -r "$SOURCE_DIR/Assets" \
+          "$SOURCE_DIR/Backgrounds" \
+          "$SOURCE_DIR/Components" \
+          "$SOURCE_DIR/Themes" \
+          "$SOURCE_DIR/i18n" \
+          "$SOURCE_DIR/Main.qml" \
+          "$SOURCE_DIR/metadata.desktop" \
+          "$SOURCE_DIR/setup.sh" \
+          "$THEME_DIR/"
+    
+    chmod +x "$THEME_DIR/setup.sh"
+fi
 
 if [ ! -f "$THEME_DIR/Main.qml" ]; then
     echo -e "${RED}Installation failed.${NC}"

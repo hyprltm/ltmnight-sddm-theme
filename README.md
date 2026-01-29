@@ -41,7 +41,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 | Qt6 Quick | `qt6-declarative` | `qt6-qtdeclarative` | `qml6-module-qtquick-*` |
 | Qt6 SVG | `qt6-svg` | `qt6-qtsvg` | `libqt6svg6` |
 | Qt6 Multimedia | `qt6-multimedia-ffmpeg` | `qt6-qtmultimedia` | `qml6-module-qtmultimedia` |
-| Qt6 5Compat | `qt6-5compat` | `qt6-qt5compat` | `qml6-module-qt5compat-*` |
+
 | Font | `ttf-jetbrains-mono` | `jetbrains-mono-fonts` | `fonts-jetbrains-mono` |
 | Virtual Keyboard | `qt6-virtualkeyboard` | `qt6-qtvirtualkeyboard` | `qml6-module-qtquick-virtualkeyboard` |
 
@@ -54,6 +54,31 @@ curl -sSL https://raw.githubusercontent.com/hyprltm/ltmnight-sddm-theme/main/set
 > The installer is interactive and will ask for your preferences on:
 > *   **Background Style** (Static Image, Live Video, or Animated LTMNight Shader)
 > *   **Virtual Keyboard** (Disabled, Manual, or Touch Mode)
+
+### Install via AUR (Arch & Manjaro)
+
+```bash
+yay -S ltmnight-sddm-theme
+```
+> [!NOTE]
+> After installing, run `sudo ltmnight-sddm-configurator` to customize the background and Virtual Keyboard!
+
+### Install via KDE System Settings
+If you are using **KDE Plasma**, you can install the theme directly via **KDE System Settings**.
+
+> [!NOTE]
+> This requires the **SDDM KCM** module (usually installed as `sddm-kcm` or part of `plasma-desktop`).
+
+1. Go to **System Settings** > **Login Screen (SDDM)**.
+2. Click **"Get New SDDM Themes..."**.
+3. Search for **"LTMNight SDDM Theme"**.
+4. Click **Install**.
+
+> [!TIP]
+> To customize the theme (Background/Keyboard) after installing:
+> ```bash
+> sudo /usr/share/sddm/themes/ltmnight/setup.sh
+> ```
 
 ### Manual
 1.  Copy the following folders/files to `/usr/share/sddm/themes/ltmnight`:
