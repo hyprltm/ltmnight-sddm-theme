@@ -19,7 +19,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 ![Live Preview](Previews/ltmnight-live.webp)
 
 ### Animated Shader (GLSL)
-![Shader Preview](Previews/ltmnight-shader.webm)
+![Shader Preview](Previews/ltmnight-shader.mp4)
 > **Note**: Requires OpenGL 2.1+ support (GPUs from 2010+). For very old hardware, it is recommended to use **Static Image** mode.
 
 ## Features
@@ -149,8 +149,8 @@ If you find this theme helpful, there are many ways to support the project:
 ### Financial Support
 If you'd like to support the development financially:
 
-<a href="https://www.buymeacoffee.com/linuxtechmore"><img src="https://img.shields.io/badge/Fuel%20the%20next%20commit-f1fa8c?style=for-the-badge&logo=buy-me-a-coffee&logoColor=282a36" height="42" /></a>
-<a href="https://github.com/sponsors/sniper1720"><img src="https://img.shields.io/badge/Become%20a%20Sponsor-bd93f9?style=for-the-badge&logo=github&logoColor=white" height="42" /></a>
+<a href="https://www.buymeacoffee.com/linuxtechmore"><img src="https://img.shields.io/badge/Fuel%20the%20next%20commit-f1fa8c?style=for-the-badge&logo=buy-me-a-coffee&logoColor=282a36" height="32" /></a>
+<a href="https://github.com/sponsors/sniper1720"><img src="https://img.shields.io/badge/Become%20a%20Sponsor-bd93f9?style=for-the-badge&logo=github&logoColor=white" height="32" /></a>
 
 ### Contribute & Support
 Financial contributions are not the only way to help! Here are other options:
