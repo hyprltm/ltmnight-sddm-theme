@@ -16,14 +16,10 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 ![Static Preview](Previews/ltmnight.png)
 
 ### Live Preview
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/510eb167-f97a-4fb6-add2-3444affeaa53" width="850" autoplay loop muted playsinline></video>
-</p>
+  <video src="Previews/ltmnight-live.webm" width="850" autoplay loop muted playsinline></video>
 
 ### Animated Shader (GLSL)
-<p align="center">
   <video src="https://github.com/user-attachments/assets/328ec038-a004-45e6-ba34-c3ab475aa488" width="850" autoplay loop muted playsinline></video>
-</p>
 > **Note**: Requires OpenGL 2.1+ support (GPUs from 2010+). For very old hardware, it is recommended to use **Static Image** mode.
 
 ## Features
