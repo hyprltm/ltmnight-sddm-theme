@@ -2,6 +2,22 @@
 
 All notable changes to the **ltmnight-sddm-theme** will be documented here.
 
+## v1.2.1 - The "Polishing" Release
+*Released: 2026-01-30*
+
+This release focuses on asset optimization, branding consistency, and improved out-of-the-box reliability.
+
+### Improved
+- **Stability**: Set static PNG background as default for 100% reliable first-time launch.
+- **Asset Optimization**:
+  - Reduced main preview PNG from 1.6MB to **978KB** using palette-based optimization.
+  - Standardized animations to **800px-25fps** for universal compatibility.
+- **Branding**: Implemented official "Linux-Tech&More" branding badges.
+- **Packaging**: Automated "Lite" README generation for offline release archives.
+- **Financial Support**: Added Bitcoin (BTC) support with QR code.
+
+---
+
 ## v1.2.0 - The "Visual" Update
 *Released: 2026-01-29*
 

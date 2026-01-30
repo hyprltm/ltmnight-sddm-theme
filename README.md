@@ -1,7 +1,7 @@
 # ltmnight-sddm-theme
 
 [![Linux-Tech&More](https://img.shields.io/badge/Linux--Tech%26More-Official-f1fa8c?style=for-the-badge&labelColor=282a36&logo=linux)](https://www.linuxtechmore.com/)
-![Version](https://img.shields.io/badge/Version-v1.2.0-bd93f9?style=for-the-badge&labelColor=282a36)
+![Version](https://img.shields.io/badge/Version-v1.2.1-bd93f9?style=for-the-badge&labelColor=282a36)
 ![License](https://img.shields.io/badge/License-AGPL%20v3-ffb86c?style=for-the-badge&labelColor=282a36)
 ![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36&logo=qt&logoColor=white)
 ![SDDM](https://img.shields.io/badge/SDDM-0.21+-8be9fd?style=for-the-badge&labelColor=282a36)
@@ -16,10 +16,14 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 ![Static Preview](Previews/ltmnight.png)
 
 ### Live Preview
-![Live Preview](Previews/ltmnight-live.webp)
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/510eb167-f97a-4fb6-add2-3444affeaa53" width="850" autoplay loop muted playsinline></video>
+</p>
 
 ### Animated Shader (GLSL)
-![Shader Preview](Previews/ltmnight-shader.webp)
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/328ec038-a004-45e6-ba34-c3ab475aa488" width="850" autoplay loop muted playsinline></video>
+</p>
 > **Note**: Requires OpenGL 2.1+ support (GPUs from 2010+). For very old hardware, it is recommended to use **Static Image** mode.
 
 ## Features
