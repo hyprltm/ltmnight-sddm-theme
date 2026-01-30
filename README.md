@@ -24,6 +24,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 <p align="center">
   <video src="https://github.com/user-attachments/assets/328ec038-a004-45e6-ba34-c3ab475aa488" width="850" autoplay loop muted playsinline></video>
 </p>
+
 > **Note**: Requires OpenGL 2.1+ support (GPUs from 2010+). For very old hardware, it is recommended to use **Static Image** mode.
 
 ## Features
