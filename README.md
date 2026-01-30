@@ -1,10 +1,10 @@
 # ltmnight-sddm-theme
 
-[![Linux-Tech&More](https://img.shields.io/badge/Linux--Tech%26More-Official-f1fa8c?style=for-the-badge&labelColor=282a36&logo=linux)](https://www.linuxtechmore.com/)
 ![Version](https://img.shields.io/badge/Version-v1.2.1-bd93f9?style=for-the-badge&labelColor=282a36)
 ![License](https://img.shields.io/badge/License-AGPL%20v3-ffb86c?style=for-the-badge&labelColor=282a36)
-![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36&logo=qt&logoColor=white)
+![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36)
 ![SDDM](https://img.shields.io/badge/SDDM-0.21+-8be9fd?style=for-the-badge&labelColor=282a36)
+[![Website](https://img.shields.io/badge/Website-Linux--Tech%26More-f1fa8c?style=for-the-badge&labelColor=282a36)](https://www.linuxtechmore.com/)
 
 **Premium SDDM Theme with LTMNight Styling**
 
