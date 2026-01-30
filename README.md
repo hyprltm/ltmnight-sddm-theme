@@ -1,6 +1,6 @@
 # ltmnight-sddm-theme
 
-![Stars](https://img.shields.io/github/stars/hyprltm/ltmnight-sddm-theme?style=for-the-badge&labelColor=282a36&color=ff5555)
+[![Linux-Tech&More](https://img.shields.io/badge/Linux--Tech%26More-Official-f1fa8c?style=for-the-badge&labelColor=282a36&logo=linux)](https://www.linuxtechmore.com/)
 ![Version](https://img.shields.io/badge/Version-v1.2.0-bd93f9?style=for-the-badge&labelColor=282a36)
 ![License](https://img.shields.io/badge/License-AGPL%20v3-ffb86c?style=for-the-badge&labelColor=282a36)
 ![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36&logo=qt&logoColor=white)
@@ -15,11 +15,11 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 ### Static
 ![Static Preview](Previews/ltmnight.png)
 
-### Live (video)
+### Live Preview
 ![Live Preview](Previews/ltmnight-live.webp)
 
 ### Animated Shader (GLSL)
-![Shader Preview](Previews/ltmnight-shader.mp4)
+![Shader Preview](Previews/ltmnight-shader.webp)
 > **Note**: Requires OpenGL 2.1+ support (GPUs from 2010+). For very old hardware, it is recommended to use **Static Image** mode.
 
 ## Features
@@ -176,6 +176,13 @@ If you'd like to support the development financially:
 
 <a href="https://www.buymeacoffee.com/linuxtechmore"><img src="https://img.shields.io/badge/Fuel%20the%20next%20commit-f1fa8c?style=for-the-badge&logo=buy-me-a-coffee&logoColor=282a36" height="32" /></a>
 <a href="https://github.com/sponsors/sniper1720"><img src="https://img.shields.io/badge/Become%20a%20Sponsor-bd93f9?style=for-the-badge&logo=github&logoColor=white" height="32" /></a>
+
+#### Bitcoin (BTC) Support
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=1ALZQ6F2CkjQMP8rJrUnXgfVdWwbc6RPYu" alt="BTC QR Code" width="150" />
+
+```text
+1ALZQ6F2CkjQMP8rJrUnXgfVdWwbc6RPYu
+```
 
 ### Contribute & Support
 Financial contributions are not the only way to help! Here are other options:
