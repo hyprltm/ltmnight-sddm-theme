@@ -26,7 +26,7 @@ cp Main.qml metadata.desktop setup.sh LICENSE CHANGELOG.md build_tmp/ltmnight-sd
 
 # 3. Handle Previews
 mkdir -p build_tmp/ltmnight-sddm-theme/Previews
-cp Previews/ltmnight.png build_tmp/ltmnight-sddm-theme/Previews/
+cp Previews/* build_tmp/ltmnight-sddm-theme/Previews/
 
 # 4. Create a "Lite" README for the archive (Offline-friendly)
 cp README.md build_tmp/ltmnight-sddm-theme/README.md

@@ -29,6 +29,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 
 ## Features
 *   **LTMNight Styling** — **Deep Dark** backgrounds, **Vibrant** accents, and **Fluid** interactions.
+*   **Animated Shader** — Procedural, GPU-native background using GLSL and Qt Shader Baker.
 *   **Live Backgrounds** — Supports MP4, WebM, MKV, and animated GIFs.
 *   **Partial Blur** — Frosted glass effect behind the login form.
 *   **Dynamic Hostname** — Personalized header showing your machine's name.
@@ -46,7 +47,6 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 | Qt6 Quick | `qt6-declarative` | `qt6-qtdeclarative` | `qml6-module-qtquick-*` |
 | Qt6 SVG | `qt6-svg` | `qt6-qtsvg` | `libqt6svg6` |
 | Qt6 Multimedia | `qt6-multimedia-ffmpeg` | `qt6-qtmultimedia` | `qml6-module-qtmultimedia` |
-
 | Font | `ttf-jetbrains-mono` | `jetbrains-mono-fonts` | `fonts-jetbrains-mono` |
 | Virtual Keyboard | `qt6-virtualkeyboard` | `qt6-qtvirtualkeyboard` | `qml6-module-qtquick-virtualkeyboard` |
 
