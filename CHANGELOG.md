@@ -2,6 +2,14 @@
 
 All notable changes to the **ltmnight-sddm-theme** will be documented here.
 
+## v1.2.2 - Hotfix: Safe Config Handling
+*Released: 2026-02-05*
+
+### Fixed
+- **Safe Installation**: Fixed unsafe overwriting of existing SDDM configurations. `setup.sh` now backs up conflicting files (e.g., `theme.conf.bak.YYYY-MM-DD`) and comments out the conflicting `Current=` line instead of deleting the file or overwriting it.
+
+---
+
 ## v1.2.1 - The "Polishing" Release
 *Released: 2026-01-30*
 

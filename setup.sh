@@ -3,7 +3,7 @@ set -e
 
 THEME_NAME="ltmnight"
 THEME_DIR="/usr/share/sddm/themes/$THEME_NAME"
-VERSION="1.2.1"
+VERSION="1.2.2"
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -60,6 +60,16 @@ if [ "$EUID" -ne 0 ]; then
     echo -e "${RED}Please run as root (sudo).${NC}"
     exit 1
 fi
+
+resolve_conflict() {
+    local config_file="$1"
+    if grep -q "Current=" "$config_file"; then
+        echo -e "${RED}Warning: Found conflicting config: $config_file${NC}"
+        cp "$config_file" "${config_file}.bak.$(date +%F_%T)"
+        sed -i -E 's/^Current=/#Current=/' "$config_file"
+        echo -e "${GREEN}:: Backed up and commented out conflict in: $config_file${NC}"
+    fi
+}
 
 install_deps() {
     echo -e ":: Checking dependencies..."
@@ -138,9 +148,29 @@ echo
 read -p ":: Apply theme to sddm.conf? [y/N] " -n 1 -r < /dev/tty
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    mkdir -p "/etc/sddm.conf.d"
-    echo -e "[Theme]\nCurrent=$THEME_NAME" > /etc/sddm.conf.d/theme.conf
-    echo -e "${GREEN}:: Theme set in /etc/sddm.conf.d/theme.conf${NC}"
+    CONFIG_DIR="/etc/sddm.conf.d"
+    TARGET_CONF="$CONFIG_DIR/theme.conf"
+    
+    # Ensure config directory exists
+    mkdir -p "$CONFIG_DIR"
+
+    echo -e ":: Checking for conflicting theme configurations..."
+    
+    # Check for conflicts in /etc/sddm.conf if it exists
+    if [ -f "/etc/sddm.conf" ]; then
+        resolve_conflict "/etc/sddm.conf"
+    fi
+
+    # Check for conflicts in /etc/sddm.conf.d/*.conf
+    for f in "$CONFIG_DIR"/*.conf; do
+        if [[ "$f" != "$TARGET_CONF" ]]; then
+            resolve_conflict "$f"
+        fi
+    done
+
+    # Apply new theme
+    echo -e "[Theme]\nCurrent=$THEME_NAME" > "$TARGET_CONF"
+    echo -e "${GREEN}:: Theme set in $TARGET_CONF${NC}"
 else
     echo -e ":: Skipped"
 fi
