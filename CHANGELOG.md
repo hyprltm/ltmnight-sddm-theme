@@ -2,6 +2,16 @@
 
 All notable changes to the **ltmnight-sddm-theme** will be documented here.
 
+## v1.2.3 - Hotfix: Virtual Keyboard Synchronization
+*Released: 2026-02-06*
+
+### Fixed
+- **Virtual Keyboard**:
+    - **Fixed "Hide" Button**: You can now use the keyboard's built-in "Hide" button safely. We fixed the sync issues that previously forced you to use the theme's toggle button.
+    - **Better Focus**: The "Show Keyboard" button no longer steals focus from the password field, ensuring the keyboard appears reliably whenever you click it.
+
+---
+
 ## v1.2.2 - Hotfix: Safe Config Handling
 *Released: 2026-02-05*
 

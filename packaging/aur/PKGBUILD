@@ -1,6 +1,6 @@
 # Maintainer: sniper1720 (Djalel Oukid) <sniper1720@linuxtechmore.com>
 pkgname=ltmnight-sddm-theme
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A premium, modern SDDM theme with LTMNight styling and animated backgrounds"
 arch=('any')

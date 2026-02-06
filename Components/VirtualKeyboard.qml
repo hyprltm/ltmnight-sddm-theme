@@ -7,12 +7,7 @@ import QtQuick.VirtualKeyboard
 InputPanel {
     id: virtualKeyboard
 
-    property bool manualToggle: false
-    property bool autoShowEnabled: config.VirtualKeyboardAutoShow == "true"
-
-    y: parent.height
-
-    state: (manualToggle || (autoShowEnabled && active)) ? "visible" : "hidden"
+    state: active ? "visible" : "hidden"
 
     states: [
         State {

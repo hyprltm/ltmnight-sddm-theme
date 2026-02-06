@@ -1,6 +1,6 @@
 # ltmnight-sddm-theme
 
-![Version](https://img.shields.io/badge/Version-v1.2.1-bd93f9?style=for-the-badge&labelColor=282a36)
+![Version](https://img.shields.io/badge/Version-v1.2.3-bd93f9?style=for-the-badge&labelColor=282a36)
 ![License](https://img.shields.io/badge/License-AGPL%20v3-ffb86c?style=for-the-badge&labelColor=282a36)
 ![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36)
 ![SDDM](https://img.shields.io/badge/SDDM-0.21+-8be9fd?style=for-the-badge&labelColor=282a36)
@@ -169,8 +169,6 @@ HideVirtualKeyboard="false"
 VirtualKeyboardAutoShow="false"   # or "true" for touch mode
 ```
 
-> [!WARNING]
-> Use the **theme's toggle button** to hide the keyboard. The keyboard's built-in hide button has a [known Qt6 bug](https://github.com/sddm/sddm/issues/2152) that causes crashes.
 
 ## ❤️ Support the Project
 

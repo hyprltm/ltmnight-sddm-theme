@@ -8,12 +8,16 @@ Button {
     id: virtualKeyboardButton
 
     visible: virtualKeyboard.status == Loader.Ready && config.HideVirtualKeyboard == "false"
-    checkable: true
-    flat: true
+    readonly property bool isKeyboardVisible: virtualKeyboard.item && virtualKeyboard.item.state === "visible"
     
-    onCheckedChanged: {
-        if (virtualKeyboard.item) {
-            virtualKeyboard.item.manualToggle = checked
+    checked: isKeyboardVisible
+    focusPolicy: Qt.NoFocus
+    
+    onClicked: {
+        if (isKeyboardVisible) {
+            Qt.inputMethod.hide()
+        } else {
+            Qt.inputMethod.show()
         }
     }
 
