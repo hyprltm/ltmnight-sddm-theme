@@ -16,8 +16,10 @@ Button {
     onClicked: {
         if (isKeyboardVisible) {
             Qt.inputMethod.hide()
+            if (virtualKeyboard.item) virtualKeyboard.item.manualActive = false
         } else {
             Qt.inputMethod.show()
+            if (virtualKeyboard.item) virtualKeyboard.item.manualActive = true
         }
     }
 

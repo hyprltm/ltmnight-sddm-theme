@@ -7,7 +7,14 @@ import QtQuick.VirtualKeyboard
 InputPanel {
     id: virtualKeyboard
 
-    state: active ? "visible" : "hidden"
+    property bool manualActive: false
+    state: manualActive || (active && config.VirtualKeyboardAutoShow === "true") ? "visible" : "hidden"
+
+    onActiveChanged: {
+        if (!active) {
+            manualActive = false
+        }
+    }
 
     states: [
         State {

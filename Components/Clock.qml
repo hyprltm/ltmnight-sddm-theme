@@ -8,6 +8,9 @@ import QtQuick.Effects
 Column {
     id: clock
 
+    Accessible.role: Accessible.Grouping
+    Accessible.name: qsTr("Clock and Date")
+
     width: parent.width / 2
     spacing: 0
 

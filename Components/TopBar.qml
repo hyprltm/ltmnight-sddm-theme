@@ -4,7 +4,6 @@
 import QtQuick
 import QtQuick.Layouts
 
-// TopBar - VK toggle (left) and Kblayout (right) with responsive spacing
 RowLayout {
     id: topBar
 
@@ -13,10 +12,10 @@ RowLayout {
     VirtualKeyboardButton {
         id: virtualKeyboardButton
         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+        visible: virtualKeyboard.active
     }
 
     Item {
-        // Dynamic spacer - fills available width
         Layout.fillWidth: true
     }
 

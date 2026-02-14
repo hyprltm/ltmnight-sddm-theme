@@ -98,7 +98,6 @@ Column {
             KeyNavigation.right: username
 
             delegate: ItemDelegate {
-                //  minus padding
                 width: popupHandler.width - 20
                 anchors.horizontalCenter: popupHandler.horizontalCenter
                 
@@ -229,6 +228,9 @@ Column {
             placeholderTextColor: config.PlaceholderTextColor
             selectByMouse: true
             renderType: Text.QtRendering
+            
+            Accessible.role: Accessible.EditableText
+            Accessible.name: placeholderText
             
             onFocusChanged:{
                 if(focus)
@@ -364,6 +366,9 @@ Column {
             renderType: Text.QtRendering
             selectByMouse: true
             
+            Accessible.role: Accessible.EditableText
+            Accessible.name: placeholderText
+            
             background: Rectangle {
                 color: config.PasswordFieldBackgroundColor
                 opacity: 0.6
@@ -419,6 +424,10 @@ Column {
             text: config.TranslateLogin || textConstants.login
             enabled: config.AllowEmptyPassword == "true" || username.text != "" && password.text != "" ? true : false
             hoverEnabled: true
+
+            Accessible.role: Accessible.Button
+            Accessible.name: text
+            Accessible.onPressAction: clicked()
 
             contentItem: Text {
                 horizontalAlignment: Text.AlignHCenter

@@ -34,6 +34,10 @@ RowLayout {
             visible: config.HideSystemButtons != "true" && (config.BypassSystemButtonsChecks == "true" ? 1 : modelData[2])
             hoverEnabled: true
             
+            Accessible.role: Accessible.Button
+            Accessible.name: text
+            Accessible.onPressAction: clicked()
+
             background: Rectangle {
                 height: 2
                 width: parent.width

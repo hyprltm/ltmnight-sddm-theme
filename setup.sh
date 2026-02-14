@@ -79,7 +79,7 @@ install_deps() {
         pacman -S --needed --noconfirm sddm qt6-declarative qt6-svg qt6-virtualkeyboard ttf-jetbrains-mono git
     elif [ -f /etc/fedora-release ]; then
         echo -e ":: Fedora detected"
-        dnf install -y sddm qt6-qtdeclarative qt6-qtsvg qt6-qtvirtualkeyboard jetbrains-mono-fonts git
+        dnf install -y sddm qt6-qtdeclarative qt6-qtsvg qt6-qtmultimedia qt6-qtvirtualkeyboard jetbrains-mono-fonts git
     elif [ -f /etc/debian_version ]; then
         echo -e ":: Debian/Ubuntu detected"
         apt update
@@ -151,24 +151,20 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     CONFIG_DIR="/etc/sddm.conf.d"
     TARGET_CONF="$CONFIG_DIR/theme.conf"
     
-    # Ensure config directory exists
     mkdir -p "$CONFIG_DIR"
 
     echo -e ":: Checking for conflicting theme configurations..."
     
-    # Check for conflicts in /etc/sddm.conf if it exists
     if [ -f "/etc/sddm.conf" ]; then
         resolve_conflict "/etc/sddm.conf"
     fi
 
-    # Check for conflicts in /etc/sddm.conf.d/*.conf
     for f in "$CONFIG_DIR"/*.conf; do
         if [[ "$f" != "$TARGET_CONF" ]]; then
             resolve_conflict "$f"
         fi
     done
 
-    # Apply new theme
     echo -e "[Theme]\nCurrent=$THEME_NAME" > "$TARGET_CONF"
     echo -e "${GREEN}:: Theme set in $TARGET_CONF${NC}"
 else
@@ -184,21 +180,19 @@ read -p ":: Select [1/2/3]: " -n 1 -r BG_CHOICE < /dev/tty
 echo
 
 USER_CONF="$THEME_DIR/Themes/hyprltm.conf.user"
-# Reset user config and start [General] section
-echo -e "[General]" > "$USER_CONF"
+echo "[General]" > "$USER_CONF"
 
 if [[ $BG_CHOICE =~ ^[2]$ ]]; then
     if [ -f "$THEME_DIR/Backgrounds/ltmnight.mp4" ]; then
-        echo -e "Background=\"Backgrounds/ltmnight.mp4\"\nBackgroundSpeed=\"1.0\"" >> "$USER_CONF"
+        echo "Background=\"Backgrounds/ltmnight.mp4\"" >> "$USER_CONF"
+        echo "BackgroundSpeed=\"1.0\"" >> "$USER_CONF"
         echo -e "${GREEN}:: Live background enabled${NC}"
     else
         echo -e "${RED}:: Video file not found. Keeping static background.${NC}"
     fi
 elif [[ $BG_CHOICE =~ ^[3]$ ]]; then
-    echo -e "Background=\"ltmnight\"" >> "$USER_CONF"
+    echo "Background=\"ltmnight\"" >> "$USER_CONF"
     echo -e "${GREEN}:: LTMNight GLSL background enabled${NC}"
-else
-    echo -e ":: Static background kept (default)"
 fi
 
 echo
@@ -213,17 +207,20 @@ case $VK_CHOICE in
     2)
         mkdir -p "/etc/sddm.conf.d"
         echo -e "[General]\nInputMethod=qtvirtualkeyboard" > /etc/sddm.conf.d/virtualkeyboard.conf
-        echo -e "HideVirtualKeyboard=\"false\"\nVirtualKeyboardAutoShow=\"false\"" >> "$USER_CONF"
+        echo "HideVirtualKeyboard=\"false\"" >> "$USER_CONF"
+        echo "VirtualKeyboardAutoShow=\"false\"" >> "$USER_CONF"
         echo -e "${GREEN}:: Virtual keyboard: Manual mode enabled${NC}"
         ;;
     3)
         mkdir -p "/etc/sddm.conf.d"
         echo -e "[General]\nInputMethod=qtvirtualkeyboard" > /etc/sddm.conf.d/virtualkeyboard.conf
-        echo -e "HideVirtualKeyboard=\"false\"\nVirtualKeyboardAutoShow=\"true\"" >> "$USER_CONF"
+        echo "HideVirtualKeyboard=\"false\"" >> "$USER_CONF"
+        echo "VirtualKeyboardAutoShow=\"true\"" >> "$USER_CONF"
         echo -e "${GREEN}:: Virtual keyboard: Touch/Tablet mode enabled${NC}"
         ;;
     *)
-        echo -e ":: Virtual keyboard disabled (default)"
+        echo "HideVirtualKeyboard=\"true\"" >> "$USER_CONF"
+        echo -e ":: Virtual keyboard disabled"
         ;;
 esac
 

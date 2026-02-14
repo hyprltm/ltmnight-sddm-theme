@@ -7,6 +7,10 @@ import QtQuick.Controls
 ComboBox {
     id: layoutButton
 
+    Accessible.role: Accessible.ComboBox
+    Accessible.name: qsTr("Keyboard Layout")
+    Accessible.description: qsTr("Select your keyboard layout")
+
     implicitHeight: root.font.pointSize * 2
     
     hoverEnabled: true
@@ -90,7 +94,7 @@ ComboBox {
                 return "EN"
             }
             
-            text: qsTr("Layout") + " (" + layoutCode + ")"
+            text: qsTr("Layout (%1)").arg(layoutCode)
             
             color: layoutButton.hovered || layoutButton.visualFocus 
                 ? config.HoverSessionButtonTextColor 

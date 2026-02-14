@@ -38,7 +38,6 @@ ColumnLayout {
         Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
     }
     
-    // Session selector - centered at bottom
     SessionButton {
         id: sessionSelect
         Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom

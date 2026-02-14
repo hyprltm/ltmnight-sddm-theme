@@ -17,6 +17,10 @@ Item {
     ComboBox {
         id: selectSession
 
+        Accessible.role: Accessible.ComboBox
+        Accessible.name: qsTr("Session Selection")
+        Accessible.description: qsTr("Select your desktop environment")
+
         height: parent.height
         anchors.centerIn: parent
 
@@ -84,7 +88,7 @@ Item {
                 id: displayedItem
                 anchors.verticalCenter: parent.verticalCenter
                 
-                text: (config.TranslateSessionSelection || qsTr("Session")) + " (" + selectSession.currentText + ")"
+                text: qsTr("%1 (%2)").arg(config.TranslateSessionSelection || qsTr("Session")).arg(selectSession.currentText)
                 
                 color: selectSession.hovered || selectSession.visualFocus 
                     ? config.HoverSessionButtonTextColor 

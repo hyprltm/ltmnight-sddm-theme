@@ -17,7 +17,7 @@ Pane {
     width: config.ScreenWidth || Window.width
     padding: config.ScreenPadding
 
-    LayoutMirroring.enabled: config.RightToLeftLayout == "true" ? true : Qt.application.layoutDirection === Qt.RightToLeft
+    LayoutMirroring.enabled: config.RightToLeftLayout === "true" || Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
     palette.window: config.BackgroundColor
@@ -26,99 +26,128 @@ Pane {
     palette.buttonText: config.HoverSystemButtonsIconsColor
 
     font.family: config.Font
-    font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(Math.min(width, height) / 80) || 13
+    font.pointSize: config.FontSize || parseInt(Math.min(width, height) / fontSizeRatio) || defaultFontSize
     
     focus: true
     
-    // Detect portrait mode for responsive layout
-    property bool isPortrait: height > width
+    readonly property int zBackground: 0
+    readonly property int zTint: 1
+    readonly property int zForm: 1
+    readonly property int zTopBar: 2
+    readonly property int zKeyboard: 10
 
-    property bool leftleft: config.HaveFormBackground == "true" &&
-                            config.PartialBlur == "false" &&
-                            config.FormPosition == "left" &&
-                            config.BackgroundHorizontalAlignment == "left"
+    readonly property real formWidthRatio: 2.5
+    readonly property int minFormWidth: 300
+    readonly property int defaultFontSize: 13
+    readonly property real fontSizeRatio: 80
 
-    property bool leftcenter: config.HaveFormBackground == "true" &&
-                              config.PartialBlur == "false" &&
-                              config.FormPosition == "left" &&
-                              config.BackgroundHorizontalAlignment == "center"
+    readonly property bool isPortrait: height > width
+    readonly property bool haveFormBackground: config.HaveFormBackground === "true"
+    readonly property bool partialBlur: config.PartialBlur === "true"
+    readonly property bool fullBlur: config.FullBlur === "true"
+    readonly property bool hideVirtualKeyboard: config.HideVirtualKeyboard === "true"
+    readonly property bool virtualKeyboardAutoShow: config.VirtualKeyboardAutoShow === "true"
+    readonly property bool cropBackground: config.CropBackground === "true"
+    readonly property bool pauseBackground: config.PauseBackground === "true"
 
-    property bool rightright: config.HaveFormBackground == "true" &&
-                              config.PartialBlur == "false" &&
-                              config.FormPosition == "right" &&
-                              config.BackgroundHorizontalAlignment == "right"
+    readonly property bool isVideoBackground: {
+        const filename = config.Background
+        if (!filename || config.Background === "ltmnight") return false
+        const ext = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase()
+        const videoFileTypes = ["avi", "mp4", "mov", "mkv", "m4v", "webm"]
+        return videoFileTypes.includes(ext)
+    }
 
-    property bool rightcenter: config.HaveFormBackground == "true" &&
-                               config.PartialBlur == "false" &&
-                               config.FormPosition == "right" &&
-                               config.BackgroundHorizontalAlignment == "center"
+    readonly property bool shouldOffsetBackground: haveFormBackground && !partialBlur && config.FormPosition !== "center"
+    readonly property bool backgroundOnRight: shouldOffsetBackground && formPosition === "left"
+    readonly property bool backgroundOnLeft: shouldOffsetBackground && formPosition === "right"
+
+    readonly property real backgroundWidth: {
+        if (shouldOffsetBackground) {
+            return sizeHelper.width - formBackground.width
+        }
+        return sizeHelper.width
+    }
+
+    readonly property real blurWidth: {
+        if (fullBlur) {
+            if (shouldOffsetBackground) {
+                return sizeHelper.width - formBackground.width
+            }
+            return sizeHelper.width
+        }
+        return form.width
+    }
+
+    readonly property string formPosition: config.FormPosition || "center"
+    readonly property string virtualKeyboardPosition: config.VirtualKeyboardPosition || "center"
 
     Item {
         id: sizeHelper
-
-        height: parent.height
-        width: parent.width
         anchors.fill: parent
         
         Rectangle {
             id: tintLayer
-
-            height: parent.height
-            width: parent.width
             anchors.fill: parent
-            z: 1
+            z: zTint
             color: config.DimBackgroundColor
             opacity: config.DimBackground
         }
 
         Rectangle {
             id: formBackground
-
             anchors.fill: form
             anchors.centerIn: form
-            z: 1
+            z: zForm
 
             color: config.FormBackgroundColor
-            visible: config.HaveFormBackground == "true" ? true : false
-            opacity: config.PartialBlur == "true" ? 0.5 : 1
+            visible: haveFormBackground
+            opacity: partialBlur ? 0.5 : 1
             
             radius: config.RoundCorners || 10
         }
 
         LoginForm {
             id: form
+            anchors.left: formPosition === "left" ? parent.left : undefined
+            anchors.horizontalCenter: formPosition === "center" ? parent.horizontalCenter : undefined
+            anchors.right: formPosition === "right" ? parent.right : undefined
+            z: zForm
 
             height: parent.height
-            // Wider container on portrait screens (85% width) vs landscape (40% width)
-            width: isPortrait ? Math.max(parent.width * 0.85, 300) : Math.max(parent.width / 2.5, 300)
-            anchors.left: config.FormPosition == "left" ? parent.left : undefined
-            anchors.horizontalCenter: config.FormPosition == "center" ? parent.horizontalCenter : undefined
-            anchors.right: config.FormPosition == "right" ? parent.right : undefined
-            z: 1
+            width: isPortrait ? Math.max(parent.width * 0.85, minFormWidth) : Math.max(parent.width / formWidthRatio, minFormWidth)
+
+            Accessible.role: Accessible.Form
+            Accessible.name: qsTr("Login Form")
         }
 
         TopBar {
             id: topBar
-
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.margins: root.font.pointSize * 1.5
-            z: 2
+            z: zTopBar
         }
 
         Loader {
             id: virtualKeyboard
             source: "Components/VirtualKeyboard.qml"
-            active: true
+            active: !hideVirtualKeyboard
 
-            width: config.KeyboardSize == "" ? parent.width * 0.4 : parent.width * config.KeyboardSize
+            width: parent.width * (config.KeyboardSize || 0.4)
             anchors.bottom: parent.bottom
             anchors.bottomMargin: root.font.pointSize * 1.5
-            anchors.left: config.VirtualKeyboardPosition == "left" ? parent.left : undefined
-            anchors.horizontalCenter: config.VirtualKeyboardPosition == "center" ? parent.horizontalCenter : undefined
-            anchors.right: config.VirtualKeyboardPosition == "right" ? parent.right : undefined
-            z: 10
+            anchors.left: virtualKeyboardPosition === "left" ? parent.left : undefined
+            anchors.horizontalCenter: virtualKeyboardPosition === "center" ? parent.horizontalCenter : undefined
+            anchors.right: virtualKeyboardPosition === "right" ? parent.right : undefined
+            z: zKeyboard
+
+            onStatusChanged: {
+                if (status === Loader.Error) {
+                    console.error("Failed to load virtual keyboard")
+                }
+            }
         }
         
         Loader {
@@ -128,80 +157,86 @@ Pane {
             active: config.Background === "ltmnight"
             visible: active
             asynchronous: true
+            z: zBackground
             onLoaded: {
                 item.bgColor = config.BackgroundColor
                 item.accentColor = config.HighlightBackgroundColor
+            }
+            onStatusChanged: {
+                if (status === Loader.Error) {
+                    console.error("Failed to load procedural background")
+                }
             }
         }
 
         Image {
             id: backgroundPlaceholderImage
-
-            z: 10
+            z: zBackground
             source: config.BackgroundPlaceholder || ""
-            visible: false
+            visible: isVideoBackground && player.playbackState !== MediaPlayer.PlayingState
         }
 
-        AnimatedImage {
+        Item {
             id: backgroundImage
+            visible: config.Background !== "ltmnight"
+            width: backgroundWidth
+            height: parent.height
+            z: zBackground
             
-            // Only active if NOT procedural
-            visible: config.Background !== "ltmnight"            
+            anchors.left: backgroundOnRight ? formBackground.right : undefined
+            anchors.right: backgroundOnLeft ? formBackground.left : undefined
+
             MediaPlayer {
                 id: player
-                
                 videoOutput: videoOutput
                 autoPlay: true
-                playbackRate: config.BackgroundSpeed == "" ? 1.0 : config.BackgroundSpeed
+                playbackRate: config.BackgroundSpeed || 1.0
                 loops: -1
-                onPlayingChanged: {
-                    console.log("Video started.")
-                    backgroundPlaceholderImage.visible = false;
+                source: isVideoBackground ? Qt.resolvedUrl(config.Background) : ""
+                onErrorOccurred: function(error, errorString) {
+                    console.error("Video playback error:", errorString)
                 }
             }
 
             VideoOutput {
                 id: videoOutput
-                
-                fillMode: config.CropBackground == "true" ? VideoOutput.PreserveAspectCrop : VideoOutput.PreserveAspectFit
+                fillMode: cropBackground ? VideoOutput.PreserveAspectCrop : VideoOutput.PreserveAspectFit
                 anchors.fill: parent
+                visible: player.source != ""
             }
 
-            height: parent.height
-            width: config.HaveFormBackground == "true" && config.FormPosition != "center" && config.PartialBlur != "true" ? parent.width - formBackground.width : parent.width
-            anchors.left: leftleft || leftcenter ? formBackground.right : undefined
-            anchors.right: rightright || rightcenter ? formBackground.left : undefined
+            AnimatedImage {
+                id: backgroundActualImage
+                anchors.fill: parent
+                fillMode: cropBackground ? Image.PreserveAspectCrop : Image.PreserveAspectFit
+                asynchronous: true
+                cache: true
+                clip: true
+                mipmap: true
+                playing: !pauseBackground
+                visible: !isVideoBackground
+                source: (config.Background !== "ltmnight" && !isVideoBackground) ? config.Background : ""
 
-            horizontalAlignment: config.BackgroundHorizontalAlignment == "left" ?
-                                 Image.AlignLeft :
-                                 config.BackgroundHorizontalAlignment == "right" ?
-                                 Image.AlignRight : Image.AlignHCenter
-
-            verticalAlignment: config.BackgroundVerticalAlignment == "top" ?
-                               Image.AlignTop :
-                               config.BackgroundVerticalAlignment == "bottom" ?
-                               Image.AlignBottom : Image.AlignVCenter
-
-            speed: config.BackgroundSpeed == "" ? 1.0 : config.BackgroundSpeed
-            paused: config.PauseBackground == "true" ? 1 : 0
-            fillMode: config.CropBackground == "true" ? Image.PreserveAspectCrop : Image.PreserveAspectFit
-            asynchronous: true
-            cache: true
-            clip: true
-            mipmap: true
-
-            Component.onCompleted:{
-                if (config.Background === "ltmnight") return;
-
-                var fileType = config.Background.substring(config.Background.lastIndexOf(".") + 1)
-                const videoFileTypes = ["avi", "mp4", "mov", "mkv", "m4v", "webm"];
-                if (videoFileTypes.includes(fileType)) {
-                    backgroundPlaceholderImage.visible = true;
-                    player.source = Qt.resolvedUrl(config.Background)
-                    player.play();
+                horizontalAlignment: {
+                    switch(config.BackgroundHorizontalAlignment) {
+                        case "left": return Image.AlignLeft
+                        case "right": return Image.AlignRight
+                        default: return Image.AlignHCenter
+                    }
                 }
-                else{
-                    backgroundImage.source = config.background || config.Background
+
+                verticalAlignment: {
+                    switch(config.BackgroundVerticalAlignment) {
+                        case "top": return Image.AlignTop
+                        case "bottom": return Image.AlignBottom
+                        default: return Image.AlignVCenter
+                    }
+                }
+
+                onStatusChanged: {
+                    if (status === Image.Error) {
+                        console.error("Failed to load background image")
+                    }
                 }
             }
         }
@@ -213,30 +248,25 @@ Pane {
 
         ShaderEffectSource {
             id: blurMask
-
-            height: parent.height
-            width: form.width
             anchors.centerIn: form
-
+            width: form.width
+            height: parent.height
             sourceItem: backgroundImage
             sourceRect: Qt.rect(x,y,width,height)
-            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+            visible: fullBlur || partialBlur
         }
 
         MultiEffect {
             id: blur
-            
             height: parent.height
-
-            width: (config.FullBlur == "true" && config.PartialBlur == "false" && config.FormPosition != "center" ) ? parent.width - formBackground.width : config.FullBlur == "true" ? parent.width : form.width 
-            anchors.centerIn: config.FullBlur == "true" ? backgroundImage : form
-
-            source: config.FullBlur == "true" ? backgroundImage : blurMask
+            width: blurWidth
+            anchors.centerIn: fullBlur ? backgroundImage : form
+            source: fullBlur ? backgroundImage : blurMask
             blurEnabled: true
             autoPaddingEnabled: false
-            blur: config.Blur == "" ? 2.0 : config.Blur
-            blurMax: config.BlurMax == "" ? 48 : config.BlurMax
-            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+            blur: config.Blur || 2.0
+            blurMax: config.BlurMax || 48
+            visible: fullBlur || partialBlur
         }
     }
 }
