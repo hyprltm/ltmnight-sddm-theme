@@ -1,6 +1,6 @@
 # ltmnight-sddm-theme
 
-![Version](https://img.shields.io/badge/Version-v1.2.3-bd93f9?style=for-the-badge&labelColor=282a36)
+![Version](https://img.shields.io/badge/Version-v1.2.4-bd93f9?style=for-the-badge&labelColor=282a36)
 ![License](https://img.shields.io/badge/License-AGPL%20v3-ffb86c?style=for-the-badge&labelColor=282a36)
 ![Qt](https://img.shields.io/badge/Qt-6.10+-50fa7b?style=for-the-badge&labelColor=282a36)
 ![SDDM](https://img.shields.io/badge/SDDM-0.21+-8be9fd?style=for-the-badge&labelColor=282a36)
@@ -37,6 +37,7 @@ A modern, polished SDDM login theme featuring the LTMNight aesthetic — deep da
 *   **Session Selector** — Dropdown centered at the bottom to choose your desktop environment.
 *   **Keyboard Layout** — Globe icon in top-right corner to switch input languages.
 *   **Multi-Language** — 15 languages with auto-detection, RTL support for Arabic/Persian/Urdu.
+*   **Accessibility** — Screen reader‑friendly roles and names across core UI (Clock, System Buttons, Keyboard Layout, Session Selector, Login Input).
 *   **HiDPI Ready** — Auto-scales UI based on screen resolution.
 
 ## Dependencies

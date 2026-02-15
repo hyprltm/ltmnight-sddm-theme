@@ -2,6 +2,28 @@
 
 All notable changes to the **ltmnight-sddm-theme** will be documented here.
 
+## v1.2.4 - Maintenance: Layout & Stability
+*Released: 2026-02-15*
+
+### Added
+- Accessible properties for screen reader support across core UI:
+  [Components/Clock.qml](Components/Clock.qml),
+  [Components/SystemButtons.qml](Components/SystemButtons.qml),
+  [Components/Kblayout.qml](Components/Kblayout.qml),
+  [Components/SessionButton.qml](Components/SessionButton.qml),
+  [Components/Input.qml](Components/Input.qml) (fields and login button).
+
+### Fixed
+- Background no longer overlaps the form on left/right layouts in [Main.qml](Main.qml).
+- Removed duplicate font bindings to prevent greeter fallback and ComboBox errors in [Main.qml](Main.qml).
+
+### Improved
+- Extracted computed properties (backgroundWidth, blurWidth, formPosition, virtualKeyboardPosition) for clarity and performance in [Main.qml](Main.qml).
+- Clearer background positioning flags (shouldOffsetBackground, backgroundOnLeft/Right) in [Main.qml](Main.qml).
+- Simplified RTL handling and image alignment using switch logic in [Main.qml](Main.qml).
+- Improved virtual keyboard behavior with manual activation toggle in [Components/VirtualKeyboard.qml](Components/VirtualKeyboard.qml).
+- Removed redundant comments across QML files for a cleaner codebase.
+
 ## v1.2.3 - Hotfix: Virtual Keyboard Synchronization
 *Released: 2026-02-06*
 
