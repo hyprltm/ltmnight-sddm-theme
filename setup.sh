@@ -3,7 +3,7 @@ set -e
 
 THEME_NAME="ltmnight"
 THEME_DIR="/usr/share/sddm/themes/$THEME_NAME"
-VERSION="1.2.3"
+VERSION="1.2.4"
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'

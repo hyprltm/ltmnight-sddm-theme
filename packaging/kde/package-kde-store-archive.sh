@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="1.2.3"
+VERSION="1.2.4"
 ARCHIVE_NAME="ltmnight-sddm-theme-v${VERSION}.tar.gz"
 
 # Find the repo root
